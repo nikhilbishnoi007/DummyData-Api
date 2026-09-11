@@ -5,7 +5,7 @@ import userRouter from "./routes/user.routes"
 const app = express()
 app.use(cors())
 app.get("/",(req:Request,res:Response)=>{
-    res.send("server is running")
+    res.send("Api for dummy data")
 })
 
 app.use("/api",userRouter)
