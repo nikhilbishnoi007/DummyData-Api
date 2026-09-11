@@ -2,7 +2,7 @@ import { Request,Response } from "express";
 import { users } from "../data/users";
 
 export const getuser=(req:Request,res:Response)=>{
-    const { name, id, city, age, gender,limit,minAge,maxAge} = req.query
+    const { name, id, city, age, gender,limit,minAge,maxAge,cities} = req.query
     let result=users
     if (id) {
         const user = users.find((u) => u.id === Number(id))
@@ -28,7 +28,14 @@ export const getuser=(req:Request,res:Response)=>{
         result=result.filter((u)=>u.gender.toLowerCase()===String(gender).toLowerCase())
     }
     if(minAge){
-    result=result.filter((u)=>u.age>Number(minAge))
+    result=result.filter((u)=>u.age>=Number(minAge))
+  }
+  if(maxAge){
+    result=result.filter((u)=>u.age<=Number(maxAge))
+  }
+  if(cities){
+    const cityArray = String(cities).split(",").map((c)=>c.toLowerCase()) 
+  result = result.filter((u) => cityArray.includes(u.city.toLowerCase()))
   }
     const totalMatches = result.length
     if (limit) {
