@@ -1,13 +1,14 @@
 {
   "name": "dummy-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "creat a custom api for dummy data",
   "main": "server.js",
   "scripts": {
-     "dev": "tsx watch src/server.ts"
+     "dev": "tsx watch src/server.ts",
+     "start": "tsx src/server.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nikhil Bishnoi",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
